@@ -210,10 +210,11 @@ instance Bits Expr where
   bit          = error "Not supported: bit"
   popCount     = error "Not supported: popCount"
 
+instance Semigroup Expr where
+  a <> b = mconcat [a, b]
 
 instance Monoid Expr where
   mempty      = 0
-  mappend a b = mconcat [a, b]
   mconcat     = Concat
 
 data LHS
